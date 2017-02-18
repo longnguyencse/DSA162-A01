@@ -1,1 +1,83 @@
-src
+#Bài tập lớn 01
+##Mô tả
+Giao thông đường bộ Việt Nam là một tổ hợp gồm nhiều loại xe, nhiều kích cỡ 
+hoạt động trên cùng một tuyến đường. Sự va chạm, xung đột, tai nạn rất dễ 
+xảy ra. Đặc biệt, tại các đô thị lớn như thành phố Hồ Chí Minh (Tp.HCM) có 
+không ít lái xe do ý thức chấp hành luật giao thông kém nên đã xuất hiện tình 
+trạng phóng nhanh vượt ẩu, lạng lách, đánh võng, lấn làn gây bức xúc trong 
+dư luận, trở thành nỗi ám ảnh của hành khách và người tham gia giao thông. 
+Các hành vi này chẳng những làm giảm an toàn giao thông mà còn là yếu tố 
+chính góp phần ùn tắc giao thông, đặc biệt là tại một thành phố lớn như Tp.HCM. 
+
+Đại đa số đều đồng ý quan điểm rằng phát triển tốt giao thông công cộng để 
+phục vụ người dân là một yếu tố quan trọng và hữu hiệu góp phần giải quyết 
+các vấn đề trên, trong đó bài toán cơ sở là quản lý tốt các phương tiện vận tải 
+công cộng. Việc quản lý này sẽ giúp kiểm soát các hành vi giao thông của các 
+phương tiện vận tải công cộng, nhằm nâng cao ý thức và hình ảnh của nhóm 
+phương tiện này.
+
+Về mặt qui trình, hiện tại các phương tiện công cộng tại Tp. HCM được quản lý 
+bởi cả doanh nghiệp vận tải công cộng và tư nhân, được gọi là các đại lý. Ví dụ 
+về xe buýt công cộng, để vận hành từng tuyến đường xe buýt, các đại lý được 
+tham gia đấu thầu. Dựa trên các tiêu chí đã được đặt ra công khai cho từng 
+tuyến xe buýt, Trung tâm quản lý và hoạt động cho giao thông công cộng 
+(TT Điều hành), đại diện Sở Giao thông Vận tải Tp.HCM, sẽ lựa chọn chỉ một 
+đại lý cho một tuyến xe buýt. Các đại lý trúng thầu sẽ chịu trách nhiệm cung cấp 
+và điều hành hoạt động của các xe buýt trên tuyến. Hoạt động hằng ngày và 
+các thông tin điều khiển của xe buýt phải báo cáo đến cơ quan trước khi xe lăn bánh.
+
+Mỗi xe buýt và cũng như hầu hết các phương tiện vận tải công cộng hiện nay 
+được trang bị hộp đen thiết bị GPS (dùng để lưu trữ hành trình của các xe). 
+Trong thực tế, nhu cầu về số lượng phương tiện vận tải đa dạng và tùy thuộc 
+vào khoảng thời gian trong ngày. 
+
+Trong bài tập lớn này, chúng ta sẽ phát triển một module cơ bản để quản lý các 
+thông tin GPS lưu trữ được từ hành trình các phương tiện vận tải.
+
+##Yêu cầu
+Trong bài tập lớn này, sinh viên sẽ được cung cấp hai file trong đó
+- Một file chứa dữ liệu nhập, bao gồm các mẫu thông tin về trạng thái của phương tiện vận tải tại một thời điểm. Các mẫu dữ liệu nhập này đều được lưu trữ và biểu diễn dưới dạng danh sách liên kết (linked list).
+- Một file chứa một (hoặc một tập các) yêu cầu truy xuất. Chi tiết cụ thể yêu cầu công việc sinh viên phải làm sẽ mô tả trong phần 4.
+
+##Dữ liệu nhập:
+Dữ liệu nhập của chương trình được chứa trong file input như sau:
+- 1B03755,1,0000001234567890,0.0,1.472989878E9,106.781668333333,10.65749,0.0,348.0,0,1,0,0,0,1,0.0,0.0
+  61C21884,1,,0.0,1.472989881E9,106.411811666667,11.1932933333333,0.0,288.0,0,0,0,0,0,0,0.0,0.0
+  51B14725,1,0000001234567891,0.0,1.472989881E9,106.689196666667,10.7733133333333,0.0,30.0,1,1,0,0,0,0,0.0,0.0
+  51C65728,1,0000,0.0,1.472989881E9,106.6605,10.8074,0.0,0.0,0,0,0,0,0,0,0.0,0.0 
+
+Mỗi dòng trong file sẽ chứa một loạt các thông tin mô tả như sau:
+- Phần tử đầu tiên: biển số xe (vehicle ID).
+- Phần tử thứ 5: thời điểm xe gửi tín hiệu GPS (timestamp).
+- Phần tử thứ 6: kinh độ (longitude).
+- Phần tử thứ 7: vĩ độ (latitude).
+
+##Các yêu cầu truy xuất
+Các yêu cầu có thể được xử lý trên database.
+- 0: số lượng phương tiện đang có trong database 
+- 1A: phương tiện vận tải được lưu trữ đầu tiên
+- 1B: phương tiện vận tải được lưu trữ cuối cùng
+- 2AXXYXXXXX: tọa độ lat được lưu trữ đầu tiên của xe mang biển số XXYXXXXX
+- 2BXXYXXXXX: tọa độ long được lưu trữ đầu tiên của xe mang biển số XXYXXXXX
+- 3AXXYXXXXX: tọa độ lat được lưu trữ cuối cùng của xe mang biển số XXYXXXXX
+- 3BXXYXXXXX: tọa độ long được lưu trữ cuối cùng của xe mang biển số XXYXXXXX
+- 4AXXYXXXXX: thời điểm bắt đầu lưu trữ của xe mang biển số XXYXXXXX
+- 4BXXYXXXXX: thời điểm kết thúc lưu trữ của xe mang biển số XXYXXXXX
+- 5AXXYXXXXX: số lượng thông tin lưu trữ của xe mang biển số XXYXXXXX
+- 5BXXYXXXXX: độ dài hành trình lưu trữ của xe mang biển số XXYXXXXX
+- 5CXXYXXXXX: thời lượng hành trình lưu trữ của xe mang biển số XXYXXXXX
+- 6AXXYXXXXX: điểm dừng đầu tiên của xe mang biển số XXYXXXXX
+- 6BXXYXXXXX: điểm dừng cuối cùng của xe mang biển số XXYXXXXX
+- 6CXXYXXXXX: thời lượng dừng lâu nhất của xe mang biển số XXYXXXXX
+- 6DXXYXXXXX: khoảng cách trung bình khi thu thập dữ liệu của xe mang biển số XXYXXXXX
+- 7A: thời lượng dừng lâu nhất của tất cả các phương tiện vận tải trong CSDL
+- 7B: số lượng thông tin của tất cả các phương tiện vận tải
+- 7C: phương tiện vận tải có số lượng thông tin nhiều nhất
+- 7D: phương tiện vận tải có số lượng thông tin ít nhất
+- 7E: phương tiện vận tải di chuyển lâu nhất
+- 7F: phương tiện vận tải di chuyển ngắn nhất
+- 7G: số lượng phương tiện vận tải luôn di chuyển và không dừng
+- 7H: khoảng cách trung bình khi thu thập dữ liệu của tất cả các phương tiện vận tải
+- 7I: phương tiện vận tải có hành trình dài nhất
+- 7J: phương tiện vận tải có hành trình ngắn nhất
+8XXYXXXXX: xóa các thông tin lưu trữ của xe mang biển số XXYXXXXX
