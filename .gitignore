@@ -65,3 +65,5 @@
 *.su
 
 *.txt
+*.cmake
+CMakeFiles/*

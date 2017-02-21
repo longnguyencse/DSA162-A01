@@ -39,12 +39,15 @@ Trong bài tập lớn này, sinh viên sẽ được cung cấp hai file trong 
 - Một file chứa dữ liệu nhập, bao gồm các mẫu thông tin về trạng thái của phương tiện vận tải tại một thời điểm. Các mẫu dữ liệu nhập này đều được lưu trữ và biểu diễn dưới dạng danh sách liên kết (linked list).
 - Một file chứa một (hoặc một tập các) yêu cầu truy xuất. Chi tiết cụ thể yêu cầu công việc sinh viên phải làm sẽ mô tả trong phần 4.
 
-##Dữ liệu nhập:
+###Dữ liệu nhập
 Dữ liệu nhập của chương trình được chứa trong file input như sau:
-- 1B03755,1,0000001234567890,0.0,1.472989878E9,106.781668333333,10.65749,0.0,348.0,0,1,0,0,0,1,0.0,0.0
-  61C21884,1,,0.0,1.472989881E9,106.411811666667,11.1932933333333,0.0,288.0,0,0,0,0,0,0,0.0,0.0
-  51B14725,1,0000001234567891,0.0,1.472989881E9,106.689196666667,10.7733133333333,0.0,30.0,1,1,0,0,0,0,0.0,0.0
-  51C65728,1,0000,0.0,1.472989881E9,106.6605,10.8074,0.0,0.0,0,0,0,0,0,0,0.0,0.0 
+
+| # | Nội dung |
+|---|:---------|
+|1| 1B03755,1,0000001234567890,0.0,1.472989878E9,106.781668333333,10.65749,0.0,348.0,0,1,0,0,0,1,0.0,0.0 |
+|2| 61C21884,1,,0.0,1.472989881E9,106.411811666667,11.1932933333333,0.0,288.0,0,0,0,0,0,0,0.0,0.0 |
+|3| 51B14725,1,0000001234567891,0.0,1.472989881E9,106.689196666667,10.7733133333333,0.0,30.0,1,1,0,0,0,0,0.0,0.0 |
+|4| 51C65728,1,0000,0.0,1.472989881E9,106.6605,10.8074,0.0,0.0,0,0,0,0,0,0,0.0,0.0 |
 
 Mỗi dòng trong file sẽ chứa một loạt các thông tin mô tả như sau:
 - Phần tử đầu tiên: biển số xe (vehicle ID).
@@ -52,32 +55,86 @@ Mỗi dòng trong file sẽ chứa một loạt các thông tin mô tả như sa
 - Phần tử thứ 6: kinh độ (longitude).
 - Phần tử thứ 7: vĩ độ (latitude).
 
+###Dữ liệu xuất
+Dữ liệu sinh viên xuất ra cần tuân thủ các quy tắc sau:
+ + Số nguyên: không cần định dạng
+ + Số thực: độ chính xác 3 chữ số
+ + Các dòng dữ liệu: với mỗi request, sinh viên xuất ra
+ thông tin trên cùng một dòng, cách nhau bởi khoảng trắng.
+ + Nếu dữ liệu gồm nhiều dòng thì mỗi dòng xuất thông tin của một đối tượng
+ (vd: dữ liệu của cùng một bus). 
+ + Nếu request là dạng command, sinh viên xuất 
+ ra `nội dung request`: `Succeed`/`Failed`.
+
 ##Các yêu cầu truy xuất
 Các yêu cầu có thể được xử lý trên database.
-- 0: số lượng phương tiện đang có trong database 
-- 1A: phương tiện vận tải được lưu trữ đầu tiên
-- 1B: phương tiện vận tải được lưu trữ cuối cùng
-- 2AXXYXXXXX: tọa độ lat được lưu trữ đầu tiên của xe mang biển số XXYXXXXX
-- 2BXXYXXXXX: tọa độ long được lưu trữ đầu tiên của xe mang biển số XXYXXXXX
-- 3AXXYXXXXX: tọa độ lat được lưu trữ cuối cùng của xe mang biển số XXYXXXXX
-- 3BXXYXXXXX: tọa độ long được lưu trữ cuối cùng của xe mang biển số XXYXXXXX
-- 4AXXYXXXXX: thời điểm bắt đầu lưu trữ của xe mang biển số XXYXXXXX
-- 4BXXYXXXXX: thời điểm kết thúc lưu trữ của xe mang biển số XXYXXXXX
-- 5AXXYXXXXX: số lượng thông tin lưu trữ của xe mang biển số XXYXXXXX
-- 5BXXYXXXXX: độ dài hành trình lưu trữ của xe mang biển số XXYXXXXX
-- 5CXXYXXXXX: thời lượng hành trình lưu trữ của xe mang biển số XXYXXXXX
-- 6AXXYXXXXX: điểm dừng đầu tiên của xe mang biển số XXYXXXXX
-- 6BXXYXXXXX: điểm dừng cuối cùng của xe mang biển số XXYXXXXX
-- 6CXXYXXXXX: thời lượng dừng lâu nhất của xe mang biển số XXYXXXXX
-- 6DXXYXXXXX: khoảng cách trung bình khi thu thập dữ liệu của xe mang biển số XXYXXXXX
-- 7A: thời lượng dừng lâu nhất của tất cả các phương tiện vận tải trong CSDL
-- 7B: số lượng thông tin của tất cả các phương tiện vận tải
-- 7C: phương tiện vận tải có số lượng thông tin nhiều nhất
-- 7D: phương tiện vận tải có số lượng thông tin ít nhất
-- 7E: phương tiện vận tải di chuyển lâu nhất
-- 7F: phương tiện vận tải di chuyển ngắn nhất
-- 7G: số lượng phương tiện vận tải luôn di chuyển và không dừng
-- 7H: khoảng cách trung bình khi thu thập dữ liệu của tất cả các phương tiện vận tải
-- 7I: phương tiện vận tải có hành trình dài nhất
-- 7J: phương tiện vận tải có hành trình ngắn nhất
-8XXYXXXXX: xóa các thông tin lưu trữ của xe mang biển số XXYXXXXX
+
+| Mã sự kiện | Ý nghĩa |
+| ---------- | ------- |
+| 0          | số lượng phương tiện đang có trong database | 
+| 1A         | phương tiện vận tải được lưu trữ đầu tiên   |
+| 1B         | phương tiện vận tải được lưu trữ cuối cùng  |
+| 2AXXYXXXXX | tọa độ lat được lưu trữ đầu tiên của xe mang biển số `XXYXXXXX` |
+| 2BXXYXXXXX | tọa độ long được lưu trữ đầu tiên của xe mang biển số `XXYXXXXX` |
+| 3AXXYXXXXX | tọa độ lat được lưu trữ cuối cùng của xe mang biển số `XXYXXXXX` |
+| 3BXXYXXXXX | tọa độ long được lưu trữ cuối cùng của xe mang biển số `XXYXXXXX` |
+| 4AXXYXXXXX | thời điểm bắt đầu lưu trữ của xe mang biển số `XXYXXXXX` |
+| 4BXXYXXXXX | thời điểm kết thúc lưu trữ của xe mang biển số `XXYXXXXX` |
+| 5AXXYXXXXX | số lượng thông tin lưu trữ của xe mang biển số `XXYXXXXX` |
+| 5BXXYXXXXX | độ dài hành trình lưu trữ của xe mang biển số `XXYXXXXX` |
+| 5CXXYXXXXX | thời lượng hành trình lưu trữ của xe mang biển số `XXYXXXXX` |
+| 6AXXYXXXXX | điểm dừng đầu tiên của xe mang biển số `XXYXXXXX` |
+| 6BXXYXXXXX | điểm dừng cuối cùng của xe mang biển số `XXYXXXXX` |
+| 6CXXYXXXXX | thời lượng dừng lâu nhất của xe mang biển số `XXYXXXXX` |
+| 6DXXYXXXXX | khoảng cách trung bình khi thu thập dữ liệu của xe mang biển số `XXYXXXXX` |
+| 7A         | thời lượng dừng lâu nhất của tất cả các phương tiện vận tải trong CSDL |
+| 7B         | số lượng thông tin của tất cả các phương tiện vận tải |
+| 7C         | phương tiện vận tải có số lượng thông tin nhiều nhất |
+| 7D         | phương tiện vận tải có số lượng thông tin ít nhất |
+| 7E         | phương tiện vận tải di chuyển lâu nhất |
+| 7F         | phương tiện vận tải di chuyển ngắn nhất |
+| 7G         | số lượng phương tiện vận tải luôn di chuyển và không dừng |
+| 7H         | khoảng cách trung bình khi thu thập dữ liệu của tất cả các phương tiện vận tải |
+| 7I         | phương tiện vận tải có hành trình dài nhất |
+| 7J         | phương tiện vận tải có hành trình ngắn nhất |
+| 8XXYXXXXX  | xóa các thông tin lưu trữ của xe mang biển số `XXYXXXXX` |
+
+##Hiện thực
+**Sinh viên được cung cấp các file sau:**
+ - main.cpp: mã nguồn chính của chương trình
+ - listLib.h: file chứa định nghĩa thư viện danh sách liên kết
+ - dbLib.h: file header chứa prototype cần thiết để quản lý database
+ - dbLib.cpp: mã nguồn hiện thực các chức năng quản lý database
+ - eventLib.h: file header chứa các prototype cần thiết để quản lý các sự kiện
+ - eventLib.cpp: mã nguồn hiện thực các hàm xử lý sự kiện
+
+__Sinh viên được cho các hàm sau:__
+ - distanceEarth: tính khoảng cách giữa 2 điểm trên mặt đất với 
+ toạ độ (latitude, longitude) cho trước.
+ - loadBusDB: đọc file và lấy dữ liệu bus vào danh sách
+ - parseBusInfo: đọc thông tin bus từ dòng dữ liệu
+
+Đối với file thư viện listLib.h, sinh viên được cung cấp sẵn định 
+nghĩa cơ bản. Ngoài ra, _để build được chương trình hoàn chỉnh, sinh viên
+cần hoàn thiện các hàm còn lại trong danh sách_.
+
+__processData.cpp__
+Sinh viên hiện thực việc xử lý các yêu cầu thông qua hàm __*processEvent*__.
+Không được thay đổi prototype của hàm này.
+
+Sinh viên được phép tuỳ biến, chỉnh sửa `listLib.h` và `processData.cpp`.
+ 
+## Build
+Sinh viên thực hiện build bằng lệnh `make` từ command line trên Linux
+và chạy file `a01`. Cú pháp trên linux như sau:
+> `./a01 event.txt input1.txt`
+
+trong đó `event.txt` là file chứa danh sách các sự kiện, cách nhau bởi 
+  khoảng trắng hoặc ký tự xuống dòng.
+  `input1.txt` là file dữ liệu xe bus, sinh viên có thể thử nghiệm với 
+  các file dữ liệu khác nhau. 
+
+Đối với các bạn dùng VisualStudio trên Windows, các bạn có thể tạo một 
+project và thêm các file mã nguồn vào. Nếu không bạn có thể sử dụng hệ 
+thống CMake để tự sinh project VS cho mình.
+ 
