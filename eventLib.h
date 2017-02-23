@@ -26,7 +26,9 @@ using namespace std;
 typedef struct busEvent {
     char        code[EVENT_CODE_SIZE];
 
-    busEvent() : code("0") {} // default event is "0"
+    busEvent() {
+        strcpy(code, "0");// default event is "0"
+    }
     busEvent(char* str) {
         strncpy(code, str, EVENT_CODE_SIZE - 1);
     }
