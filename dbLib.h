@@ -19,6 +19,10 @@
 #include "listLib.h"
 #include "eventLib.h"
 
+#ifdef _MSC_VER
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #define ID_MAX_LENGTH   16
 
 typedef struct BusInfo {

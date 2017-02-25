@@ -55,6 +55,9 @@ Mỗi dòng trong file sẽ chứa một loạt các thông tin mô tả như sa
 - Phần tử thứ 6: kinh độ (longitude).
 - Phần tử thứ 7: vĩ độ (latitude).
 
+Ngoài ra, xe được xem là đang dừng khi toạ độ tại thời điểm hiện tại so với thời điểm trước đó cách nhau 
+ dưới 5m.
+
 ###Dữ liệu xuất
 Dữ liệu sinh viên xuất ra cần tuân thủ các quy tắc sau:
  + Số nguyên: không cần định dạng

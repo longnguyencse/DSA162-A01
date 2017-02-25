@@ -20,6 +20,10 @@
 
 #include "listLib.h"
 
+#ifdef _MSC_VER
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #define EVENT_CODE_SIZE     16
 using namespace std;
 
