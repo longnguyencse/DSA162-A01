@@ -11,6 +11,22 @@
 #ifndef A01_LISTLIB_H
 #define A01_LISTLIB_H
 
+#include <string>
+using namespace std;
+
+class DSAException {
+    int     _error;
+    string  _text;
+public:
+
+    DSAException() : _error(0), _text("Success") {}
+    DSAException(int err) : _error(err), _text("Unknown Error") {}
+    DSAException(int err, const char* text) : _error(err), _text(text) {}
+
+    int getError() { return _error; }
+    string& getErrorText() { return _text; }
+};
+
 template <class T>
 struct L1Item {
     T data;
@@ -24,7 +40,7 @@ class L1List {
     L1Item<T>   *_pHead;// The head pointer of linked list
     size_t      _size;// number of elements in this list
 public:
-    L1List() : _pHead(NULL), _size(0) {};
+    L1List() : _pHead(NULL), _size(0) {}
     ~L1List();
 
     void    clean();
@@ -50,8 +66,20 @@ public:
 
     void    reverse();
 
-    void    traverse(void (*op)(T&));
-    void    traverse(void (*op)(T&, void*), void* pParam);
+    void    traverse(void (*op)(T&)) {
+        L1Item<T>   *p = _pHead;
+        while (p) {
+            op(p->data);
+            p = p->pNext;
+        }
+    }
+    void    traverse(void (*op)(T&, void*), void* pParam) {
+        L1Item<T>   *p = _pHead;
+        while (p) {
+            op(p->data, pParam);
+            p = p->pNext;
+        }
+    }
 };
 
 /// Insert item to the end of the list
@@ -120,5 +148,7 @@ int L1List<T>::removeLast() {
     }
     return -1;
 }
+
+
 
 #endif //A01_LISTLIB_H

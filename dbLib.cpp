@@ -72,6 +72,7 @@ bool parseBusInfo(char* pBuf, BusInfo_t& bInfo) {
         }
         j++;
     }
+    return true;
 }
 
 void process(L1List<busEvent_t>& eventList, L1List<BusInfo_t>& bList) {
