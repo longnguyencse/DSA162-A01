@@ -37,13 +37,13 @@ void    loadBusDB(char* fName, L1List<BusInfo_t> &db);
 double  distanceEarth(double lat1d, double lon1d, double lat2d, double lon2d);
 
 inline bool operator==(BusInfo_t& lhs, char* rhs) {
-    return strcpy(lhs.id, rhs) == 0;
+    return strcmp(lhs.id, rhs) == 0;
 }
 inline bool operator==(char* lhs, BusInfo_t& rhs)  {
-    return strcpy(rhs.id, lhs) == 0;
+    return strcmp(rhs.id, lhs) == 0;
 }
 inline bool operator==(BusInfo_t& lhs, BusInfo_t& rhs) {
-    return strcpy(lhs.id, rhs.id) == 0;
+    return strcmp(lhs.id, rhs.id) == 0;
 }
 inline bool operator!=(BusInfo_t& lhs, char* rhs) {
     return !(lhs == rhs);
