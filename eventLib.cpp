@@ -27,8 +27,10 @@ void loadEvents(char* fName, L1List<busEvent_t> &eList) {
             while (iss) {
                 string sub;
                 iss >> sub;
-                busEvent_t __e(sub);
-                eList.insertHead(__e);
+                if (sub.length()) {
+                    busEvent_t __e(sub);
+                    eList.insertHead(__e);
+                }
             }
         }
         eList.reverse();
