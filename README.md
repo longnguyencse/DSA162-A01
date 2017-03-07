@@ -83,25 +83,26 @@ Các yêu cầu có thể được xử lý trên database.
 | 3BXXYXXXXX | tọa độ long được lưu trữ cuối cùng của xe mang biển số `XXYXXXXX` |
 | 4AXXYXXXXX | thời điểm bắt đầu lưu trữ của xe mang biển số `XXYXXXXX` |
 | 4BXXYXXXXX | thời điểm kết thúc lưu trữ của xe mang biển số `XXYXXXXX` |
-| 5AXXYXXXXX | số lượng thông tin lưu trữ của xe mang biển số `XXYXXXXX` |
-| 5BXXYXXXXX | độ dài hành trình lưu trữ của xe mang biển số `XXYXXXXX` |
-| 5CXXYXXXXX | thời lượng hành trình lưu trữ của xe mang biển số `XXYXXXXX` |
-| 6AXXYXXXXX | điểm dừng đầu tiên của xe mang biển số `XXYXXXXX` |
-| 6BXXYXXXXX | điểm dừng cuối cùng của xe mang biển số `XXYXXXXX` |
+| 5AXXYXXXXX | số lượng thông tin lưu trữ của xe mang biển số `XXYXXXXX` (số bảng ghi trong database)|
+| 5BXXYXXXXX | độ dài hành trình lưu trữ của xe mang biển số `XXYXXXXX` (đơn vị tính theo km)|
+| 5CXXYXXXXX | thời lượng hành trình lưu trữ của xe mang biển số `XXYXXXXX` (tính từ lúc bắt đàu di chuyển đến khi kết thúc hành trình)|
+| 6AXXYXXXXX | điểm dừng đầu tiên của xe mang biển số `XXYXXXXX`: xuất cặp toạ độ (latitude, longtitude)|
+| 6BXXYXXXXX | điểm dừng cuối cùng của xe mang biển số `XXYXXXXX`: xuất cặp toạ độ (latitude, longtitude)|
 | 6CXXYXXXXX | thời lượng dừng lâu nhất của xe mang biển số `XXYXXXXX` |
 | 6DXXYXXXXX | khoảng cách trung bình khi thu thập dữ liệu của xe mang biển số `XXYXXXXX` |
 | 7A         | thời lượng dừng lâu nhất của tất cả các phương tiện vận tải trong CSDL |
-| 7B         | số lượng thông tin của tất cả các phương tiện vận tải |
-| 7C         | phương tiện vận tải có số lượng thông tin nhiều nhất |
-| 7D         | phương tiện vận tải có số lượng thông tin ít nhất |
-| 7E         | phương tiện vận tải di chuyển lâu nhất |
-| 7F         | phương tiện vận tải di chuyển ngắn nhất |
+| 7B         | số lượn record của tất cả các phương tiện vận tải |
+| 7C         | phương tiện vận tải có số lượng record nhiều nhất |
+| 7D         | phương tiện vận tải có số lượng record ít nhất |
+| 7E         | phương tiện vận tải có tổng thời gian hành trình lâu nhất |
+| 7F         | phương tiện vận tải có vận tốc trung bình nhanh nhất |
 | 7G         | số lượng phương tiện vận tải luôn di chuyển và không dừng |
 | 7H         | khoảng cách trung bình khi thu thập dữ liệu của tất cả các phương tiện vận tải |
 | 7I         | phương tiện vận tải có hành trình dài nhất |
 | 7J         | phương tiện vận tải có hành trình ngắn nhất |
-| 8XXYXXXXX  | xóa các thông tin lưu trữ của xe mang biển số `XXYXXXXX` |
-
+| 8XXYXXXXX  | xóa các record của xe mang biển số `XXYXXXXX` |
+**Lưu ý: nếu có nhiều kết quả có thể trả về thì chọn kết quả đầu tiên theo thứ tự lưu 
+trong dữ liệu đầu vào.**
 ##Hiện thực
 **Sinh viên được cung cấp các file sau:**
  - main.cpp: mã nguồn chính của chương trình
@@ -116,6 +117,7 @@ __Sinh viên được cho các hàm sau:__
  toạ độ (latitude, longitude) cho trước.
  - loadBusDB: đọc file và lấy dữ liệu bus vào danh sách
  - parseBusInfo: đọc thông tin bus từ dòng dữ liệu
+ - strPrintTime: in thời gian ra một chuỗi theo định dạng yêu cầu
 
 Đối với file thư viện listLib.h, sinh viên được cung cấp sẵn định 
 nghĩa cơ bản. Ngoài ra, _để build được chương trình hoàn chỉnh, sinh viên
@@ -126,7 +128,9 @@ Sinh viên hiện thực việc xử lý các yêu cầu thông qua hàm __*proc
 Không được thay đổi prototype của hàm này.
 
 Sinh viên được phép tuỳ biến, chỉnh sửa `listLib.h` và `processData.cpp`.
- 
+
+**Sinh viên không được sử dụng các thư viện nào khác ngoài các thư viện đã được 
+dùng trong code mẫu.**
 ## Build
 Sinh viên thực hiện build bằng lệnh `make` từ command line trên Linux
 và chạy file `a01`. Cú pháp trên linux như sau:

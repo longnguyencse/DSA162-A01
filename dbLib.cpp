@@ -22,6 +22,11 @@
 
 using namespace std;
 
+void    strPrintTime(char* des, time_t& t) {
+    tm *pTime = gmtime(&t);
+    strftime(des, 26, "%Y-%m-%d %H:%M:%S", pTime);
+}
+
 void loadBusDB(char* fName, L1List<BusInfo_t> &db) {
     ifstream inFile(fName);
 
@@ -29,8 +34,10 @@ void loadBusDB(char* fName, L1List<BusInfo_t> &db) {
         string line;
         BusInfo_t busEntry;
         while (getline(inFile , line)) {
-            parseBusInfo((char*)line.data(), busEntry);
-            db.insertHead(busEntry);
+            if (line.length() > 0) {
+                if (parseBusInfo((char*)line.data(), busEntry))
+                    db.insertHead(busEntry);
+            }
         }
         db.reverse();
         inFile.close();
@@ -72,7 +79,7 @@ bool parseBusInfo(char* pBuf, BusInfo_t& bInfo) {
         }
         j++;
     }
-    return true;
+    return counter > 6;
 }
 
 void process(L1List<busEvent_t>& eventList, L1List<BusInfo_t>& bList) {

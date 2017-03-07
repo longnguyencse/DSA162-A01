@@ -6,6 +6,11 @@
 
 using namespace std;
 
+/// NOTE: student must defined this function if they use dynamically allocated global data.
+/// If student do not use any dynamic global data, please define this function as empty function
+/// in your code (file processData.cpp) as follows
+/// void releaseBusGlobalData() {}
+void releaseBusGlobalData();
 
 /// This function displays the content of database
 void display(L1List<BusInfo_t>& bList) {
@@ -22,5 +27,7 @@ int main(int narg, char** argv) {
     /// Process events
     process(eventList, db);
 
+    /// Release any global allocaed data
+    releaseBusGlobalData();
     return 0;
 }
