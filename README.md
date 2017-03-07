@@ -103,6 +103,39 @@ Các yêu cầu có thể được xử lý trên database.
 | 8XXYXXXXX  | xóa các record của xe mang biển số `XXYXXXXX` |
 **Lưu ý: nếu có nhiều kết quả có thể trả về thì chọn kết quả đầu tiên theo thứ tự lưu 
 trong dữ liệu đầu vào.**
+
+**Ví dụ:** với file dữ liệu mẫu được cung cấp, output của bạn sẽ như sau
+
+| |
+| ------------- |
+| 0: 100
+| 1A: 51B03755
+| 1B: 51B07604
+| 2A53N9672: 10.806
+| 2B53N9672: 106.817
+| 3A53N9672: 10.806
+| 3B53N9672: 106.817
+| 4A53N9672: 2016-09-04 11:51:22
+| 4B53N9672: 2016-09-04 11:51:22
+| 5A53N9672: 1
+| 5B53N9672: 0.000
+| 5C53N9672: 0
+| 6A53N9672: Failed
+| 6B53N9672: Failed
+| 6C53N9672: Failed
+| 6D53N9672: Failed
+| 7A: 0
+| 7B: 100
+| 7C: 51B03755
+| 7D: 51B03755
+| 7E: 51B03755
+| 7F: Failed
+| 7G: 0
+| 7H: Failed
+| 7I: 51B03755
+| 7J: 51B03755
+| 82A53N9672: Failed
+
 ##Hiện thực
 **Sinh viên được cung cấp các file sau:**
  - main.cpp: mã nguồn chính của chương trình
