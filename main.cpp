@@ -24,9 +24,11 @@ int main(int narg, char** argv) {
     loadEvents(argv[1], eventList);
     loadBusDB(argv[2], db);
 
+    cout << fixed << setprecision(3);// preset for floating point numbers
     /// Process events
     process(eventList, db);
 
+    cout << resetiosflags(ios::showbase) << setprecision(-1);
     /// Release any global allocaed data
     releaseBusGlobalData();
     return 0;

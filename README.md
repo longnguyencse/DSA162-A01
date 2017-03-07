@@ -91,7 +91,7 @@ Các yêu cầu có thể được xử lý trên database.
 | 6CXXYXXXXX | thời lượng dừng lâu nhất của xe mang biển số `XXYXXXXX` |
 | 6DXXYXXXXX | khoảng cách trung bình khi thu thập dữ liệu của xe mang biển số `XXYXXXXX` |
 | 7A         | thời lượng dừng lâu nhất của tất cả các phương tiện vận tải trong CSDL |
-| 7B         | số lượn record của tất cả các phương tiện vận tải |
+| 7B         | số lượng record của tất cả các phương tiện vận tải |
 | 7C         | phương tiện vận tải có số lượng record nhiều nhất |
 | 7D         | phương tiện vận tải có số lượng record ít nhất |
 | 7E         | phương tiện vận tải có tổng thời gian hành trình lâu nhất |

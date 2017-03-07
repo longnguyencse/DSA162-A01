@@ -85,7 +85,7 @@ bool parseBusInfo(char* pBuf, BusInfo_t& bInfo) {
 void process(L1List<busEvent_t>& eventList, L1List<BusInfo_t>& bList) {
     while (!eventList.isEmpty()) {
         if(!processEvent(eventList[0], bList))
-            cout << "Bad event\n";
+            cout << eventList[0].code << " is an invalid event\n";
         eventList.removeHead();
     }
 }
