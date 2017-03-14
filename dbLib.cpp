@@ -34,6 +34,9 @@ void loadBusDB(char* fName, L1List<BusInfo_t> &db) {
         string line;
         BusInfo_t busEntry;
         while (getline(inFile , line)) {
+            /// On Windows, lines on file ends with \r\n. So you have to remove \r
+            if (line[line.length() - 1] == '\r')
+                line.erase(line.length() - 1);
             if (line.length() > 0) {
                 if (parseBusInfo((char*)line.data(), busEntry))
                     db.insertHead(busEntry);

@@ -22,6 +22,7 @@ void loadEvents(char* fName, L1List<busEvent_t> &eList) {
             /// On Windows, lines on file ends with \r\n. So you have to remove \r
             if (line[line.length() - 1] == '\r')
                 line.erase(line.length() - 1);
+            if (line == "") continue;
 
             istringstream iss(line);
             while (iss) {
