@@ -61,7 +61,8 @@ Ngoài ra, xe được xem là đang dừng khi toạ độ tại thời điểm
 ###Dữ liệu xuất
 Dữ liệu sinh viên xuất ra cần tuân thủ các quy tắc sau:
  + Số nguyên: không cần định dạng
- + Số thực: độ chính xác 3 chữ số
+ + Số thực: độ chính xác *12* chữ số (thay vì 3 chữ số như yêu cầu ban đầu). *Thay đổi 
+ này đã được cập nhật trong `main.cpp` nên các bạn không cần làm gì cả.*
  + Các dòng dữ liệu: với mỗi request, sinh viên xuất ra
  thông tin trên cùng một dòng, cách nhau bởi khoảng trắng.
  + Nếu dữ liệu gồm nhiều dòng thì mỗi dòng xuất thông tin của một đối tượng
